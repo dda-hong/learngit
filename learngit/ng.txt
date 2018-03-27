@@ -1,8 +1,10 @@
-在angular中什么情况下用config
+﻿在angular中什么情况下用config
 
 
 
-AngularJS模块可以在被加载和执行之前对模块自身进行配置。当你需要在AngularJS模块加载之前进行配置，就要用到config。只有提供者(Provider)和常量(constant)才能注入到config中。使用情形：
+AngularJS模块可以在被加载和执行之前对模块自身进行配置。
+当你需要在AngularJS模块加载之前进行配置，就要用到config。
+只有提供者(Provider)和常量(constant)才能注入到config中。使用情形如下：
 定义路由信息：
 var app = angular.module('myApp', [ngRoute]);
 app.config(["$routeProvider",function($routeProvider]){
@@ -28,3 +30,6 @@ config先执行，run后执行。
 注入的服务也有区别:
 config可以注入$stateProvider, $urlRouterProvider, $controllerProvider, $provide, $httpProvider等等provider
 run可以像controlle一样注入service,例如配置公共变量等
+
+
+html5新增加input属性都有week number url
