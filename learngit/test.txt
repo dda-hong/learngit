@@ -1,0 +1,35 @@
+﻿在angular中什么情况下用config
+
+
+
+AngularJS模块可以在被加载和执行之前对模块自身进行配置。
+当你需要在AngularJS模块加载之前进行配置，就要用到config。
+只有提供者(Provider)和常量(constant)才能注入到config中。使用情形如下：
+定义路由信息：
+var app = angular.module('myApp', [ngRoute]);
+app.config(["$routeProvider",function($routeProvider]){
+//code
+});
+使用自定义的服务：
+(注意：seivce定义的服务不能在config中使用！只有provider定义的才可以)
+app.config(["$provide",function($provide]){
+$provide.provider(){}
+})
+
+
+
+这个就要理解ng自己的运行机制
+config阶段是给了ng上下文一个针对constant与provider修改其内部属性的一个阶段
+而run阶段是在config之后的在运行独立的代码块，通常写法runBlock
+简单的说一下就是ng启动阶段是 config-->run-->compile/link
+
+
+
+执行顺序不同:
+config先执行，run后执行。
+注入的服务也有区别:
+config可以注入$stateProvider, $urlRouterProvider, $controllerProvider, $provide, $httpProvider等等provider
+run可以像controlle一样注入service,例如配置公共变量等
+
+
+html5新增加input属性都有week number url
